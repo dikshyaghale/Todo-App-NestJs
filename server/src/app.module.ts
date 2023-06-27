@@ -3,6 +3,7 @@ import { MySqlConfigService } from "./config/mysql.config.service";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { HttpExceptionFilter } from "./exceptionFilter/http.exception.filter";
+import { ToDoModule } from "./to-do/to-do.module";
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { HttpExceptionFilter } from "./exceptionFilter/http.exception.filter";
     TypeOrmModule.forRootAsync({
       useClass: MySqlConfigService,
     }),
+    ToDoModule,
   ],
   providers: [HttpExceptionFilter, ClassSerializerInterceptor],
 })

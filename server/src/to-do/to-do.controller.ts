@@ -1,7 +1,23 @@
-import { Body, Controller, Get, HttpStatus, Post, Query } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Post,
+  Put,
+  Query,
+} from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import { FilterDecorator } from "src/common/filter.decorator";
-import { createdMessage, successMessage } from "src/common/messages";
+import {
+  createdMessage,
+  deletedMessage,
+  successMessage,
+  updatedMessage,
+} from "src/common/messages";
 import { ToDoEntity } from "./entity/to-do.entity";
 import { TodoFilterDto } from "./to-do.filter.dto";
 import { ToDoService } from "./to-do.service";
@@ -29,5 +45,31 @@ export class TodoController {
       message: successMessage,
       data: await this.toDoService.findAll(params),
     };
+  }
+
+  @Put(":id")
+  @ApiOperation({ summary: "Update to-do" })
+  async updateOne(@Param("id") id: number, @Body() body: ToDoEntity) {
+    return {
+      message: updatedMessage("To-Do"),
+      httpStatus: HttpStatus.OK,
+      data: await this.toDoService.updateOne(id, body),
+    };
+  }
+
+  @Delete(":id")
+  @ApiOperation({ summary: "Delete do-do" })
+  async deleteOne(@Param("id") id: number) {
+    const data = await this.toDoService.deleteOne(id);
+    if (data) {
+      return {
+        httpStatus: HttpStatus.OK,
+        message: deletedMessage("To-Do"),
+      };
+    }
+    throw new HttpException(
+      "Something went wrong",
+      HttpStatus.INTERNAL_SERVER_ERROR
+    );
   }
 }
