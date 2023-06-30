@@ -54,7 +54,7 @@ async function bootstrap() {
   };
   SwaggerModule.setup("api/v1/docs", app, document, optionsSetup);
   app.use(urlencoded({ extended: true, limit: "50mb" }));
-  await app.listen(parseInt(process.env.APP_PORT) || 3000);
+  await app.listen(parseInt(process.env.APP_PORT) || 3002);
 }
 
 bootstrap()
