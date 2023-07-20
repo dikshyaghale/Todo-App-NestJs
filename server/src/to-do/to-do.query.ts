@@ -28,4 +28,11 @@ export class ToDoQuery {
     if (!result.length) return null;
     return result;
   }
+
+  async getTodo(id: number) {
+    const query = `select * from to_do as td where td.id=${id}`;
+    const result = await this.dataSource.query(query);
+    if (!result.length) return null;
+    return result;
+  }
 }
