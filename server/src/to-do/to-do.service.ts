@@ -24,7 +24,7 @@ export class ToDoService {
     const [result, total] = await this.toDoRepository
       .createQueryBuilder("todo")
       .getManyAndCount();
-    return result;
+    return { result, total };
   };
 
   findOne = async (id: number) => {
