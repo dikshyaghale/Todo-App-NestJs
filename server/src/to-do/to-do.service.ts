@@ -20,6 +20,10 @@ export class ToDoService {
     return await this.todoQuery.getAllToDo(params);
   };
 
+  findAllTodo = async () => {
+    return await this.toDoRepository.createQueryBuilder("todo").getMany();
+  };
+
   findOne = async (id: number) => {
     return await this.toDoRepository.findOne({ where: { id: id } });
   };
