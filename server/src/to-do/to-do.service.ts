@@ -31,6 +31,10 @@ export class ToDoService {
     return await this.toDoRepository.findOne({ where: { id: id } });
   };
 
+  findOneRaw = async (id: number) => {
+    return await this.todoQuery.getTodo(id);
+  };
+
   updateOne = async (id: number, body: ToDoEntity) => {
     body.id = id;
     await this.toDoRepository.save({ ...body });
