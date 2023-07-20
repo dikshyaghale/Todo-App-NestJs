@@ -21,7 +21,10 @@ export class ToDoService {
   };
 
   findAllTodo = async () => {
-    return await this.toDoRepository.createQueryBuilder("todo").getMany();
+    const [result, total] = await this.toDoRepository
+      .createQueryBuilder("todo")
+      .getManyAndCount();
+    return { result, total };
   };
 
   findOne = async (id: number) => {
