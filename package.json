@@ -24,6 +24,14 @@
       "git add"
     ]
   },
+    
+     "husky": {
+       "hooks": {
+         "pre-commit": "lint-staged"
+       }
+     },
+   
+
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.0.0 ",
