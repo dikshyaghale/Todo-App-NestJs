@@ -14,11 +14,10 @@
     "start:debug": "nest start --debug --watch",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.ts\"",
-    "prepare": "husky install",
-    "pre-commit": "lint-staged"
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "server/**/*.ts": [
+    "src/**/*.ts": [
       "npm run lint",
       "npm run format",
       "git add"
@@ -35,7 +34,6 @@
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "fcm-node": "^1.6.1",
-    "husky": "^8.0.3",
     "i": "^0.3.7",
     "install": "^0.13.0",
     "mysql2": "^3.0.1",
@@ -54,6 +52,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "node-mocks-http": "^1.12.1",
     "prettier": "^2.8.8",
