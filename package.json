@@ -19,8 +19,7 @@
   "lint-staged": {
     "src/**/*.ts": [
       "npm run lint",
-      "npm run format",
-      "git add"
+      "npm run format"
     ]
   },
   "dependencies": {

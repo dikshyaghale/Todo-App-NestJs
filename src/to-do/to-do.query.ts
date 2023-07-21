@@ -34,6 +34,6 @@ export class ToDoQuery {
     const result = await this.dataSource.query(query);
 
     if (!result.length) return null;
-    return { result };
+    return result;
   }
 }
