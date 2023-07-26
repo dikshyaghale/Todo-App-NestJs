@@ -33,7 +33,8 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .setTitle("API documentation for ToDo App")
     .setVersion("V1.0")
-    .addBearerAuth()
+    // .addBearerAuth()
+    .addApiKey({ type: "apiKey", name: "Api-Key", in: "header" }, "Api-Key")
     .build();
   const document = SwaggerModule.createDocument(app, options);
   const optionsSetup = {

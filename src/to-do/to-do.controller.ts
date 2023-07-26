@@ -9,8 +9,10 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from "@nestjs/common";
-import { ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiOperation, ApiSecurity, ApiTags } from "@nestjs/swagger";
+import { ApiKeyGuard } from "src/api-key/gaurd/api-key.guard";
 import { FilterDecorator } from "src/common/filter.decorator";
 import {
   createdMessage,
@@ -24,6 +26,8 @@ import { ToDoService } from "./to-do.service";
 
 @Controller("api/v1/to-do")
 @ApiTags("To-Do")
+@ApiSecurity("Api-Key")
+@UseGuards(ApiKeyGuard)
 export class TodoController {
   constructor(private toDoService: ToDoService) {}
 

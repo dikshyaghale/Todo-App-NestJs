@@ -4,6 +4,7 @@ import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { HttpExceptionFilter } from "./exceptionFilter/http.exception.filter";
 import { ToDoModule } from "./to-do/to-do.module";
+import { ApiKeyModule } from "./api-key/api-key.module";
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ToDoModule } from "./to-do/to-do.module";
       useClass: MySqlConfigService,
     }),
     ToDoModule,
+    ApiKeyModule,
   ],
   providers: [HttpExceptionFilter, ClassSerializerInterceptor],
 })
