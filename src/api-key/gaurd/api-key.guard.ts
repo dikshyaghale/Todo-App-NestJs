@@ -17,6 +17,7 @@ export class ApiKeyGuard implements CanActivate {
     const apiKey = request.headers["api-key"];
 
     if (apiKey) {
+      console.log(apiKey, "api key");
       const validApiKey = await this.apiKeyService.validateKey(apiKey);
       if (!validApiKey)
         throw new HttpException("Unauthorized", HttpStatus.UNAUTHORIZED);
